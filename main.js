@@ -10,6 +10,7 @@ let personNameEl = document.getElementById('person-name');
 personNameEl.innerText = personName;
 insertTypingElement();
 updateRepValue(200);
+updateUserStatus('active');
 
 setTimeout(() => {
     let employeeMessageBox = createMessageBoxElement('employe');
@@ -169,6 +170,7 @@ function conversationAfterButtonClick(reply, replyreply) {
             let employeeMessageBox = createMessageBoxElement('employe');
             employeeMessageBox.appendChild(createMessageContentElement(replyreply));
             contentContainer.appendChild(employeeMessageBox);
+            updateUserStatus('offline');
             removeTypingElement();
         }, 2000);
     }, 3000);
@@ -184,4 +186,23 @@ function updateRepValue(repval, operator) {
     }
     var element = document.getElementById('repvalue');
     element.innerText = this.repValue;
+}
+
+function updateUserStatus(status) {
+    const data = {
+        'active': {
+            'class': 'bg-green',
+            'title': 'Active now'
+        },
+        'offline': {
+            'class': 'bg-gray',
+            'title': 'Offline'
+        }
+    }
+
+    var element = document.getElementsByClassName('person-active')[0];
+    element.innerText = data[status].title;
+
+    var statusIconEl = document.getElementsByClassName('activity-status')[0];
+    statusIconEl.classList.add(data[status].class)
 }

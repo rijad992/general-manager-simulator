@@ -115,7 +115,6 @@ img {
 
 .activity-status {
     position: absolute;
-    background-color: green;
     height: 20px;
     width: 20px;
     bottom: 0;
@@ -188,4 +187,12 @@ img {
     font-size: 102px;
     margin: 0;
     padding: 0;
+}
+
+.bg-green {
+    background-color: green;
+}
+
+.bg-gray {
+    background-color: gray;
 }

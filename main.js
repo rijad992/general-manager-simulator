@@ -170,7 +170,7 @@ function conversationAfterButtonClick(reply, replyreply, answerType) {
             let employeeMessageBox = createMessageBoxElement('employe');
             employeeMessageBox.appendChild(createMessageContentElement(replyreply));
             contentContainer.appendChild(employeeMessageBox);
-            if (!ansverType) {
+            if (!answerType) {
                 updateUserStatus('offline');
             }
             removeTypingElement();

@@ -30,13 +30,13 @@ setTimeout(() => {
         employeeMessageBox.appendChild(createMessageContentElement('??'));
         contentContainer.appendChild(employeeMessageBox);
         removeTypingElement();
-        setTimeout(()=>{
+        setTimeout(() => {
             ['Da', 'Ne'].forEach(type => {
                 createButtonElemenet(type);
             });
-        },1000);
+        }, 1000);
     }, 2000);
-},3000);
+}, 3000);
 
 function createMessageContentElement(innerText) {
     let messageContentEl = document.createElement('h5');
@@ -80,12 +80,12 @@ function insertTypingElement() {
     gameContainer.insertBefore(element, document.getElementById('footer-outer'));
 }
 
-function removeTypingElement () {
+function removeTypingElement() {
     var element = document.getElementsByClassName('typing');
     element[0].remove();
 }
 
-function createButtonElemenet (type) {
+function createButtonElemenet(type) {
     const classes = {
         'Da': 'success',
         'Ne': 'danger'
@@ -129,10 +129,10 @@ function onClickYesButton() {
     repEl.innerText = '+100';
     repEl.classList.add('text-success');
 
-    setTimeout(()=>{
+    setTimeout(() => {
         updateRepValue(100, '+');
         repEl.classList.remove('text-success');
-    },2000)
+    }, 2000)
 }
 
 function onClickNoButton() {
@@ -145,10 +145,10 @@ function onClickNoButton() {
     repEl.innerText = '-100';
     repEl.classList.add('text-danger');
 
-    setTimeout(()=>{
+    setTimeout(() => {
         updateRepValue(100, '-');
         repEl.classList.remove('text-danger');
-    },2000)
+    }, 2000)
 }
 
 function conversationAfterButtonClick(reply, replyreply) {
@@ -159,31 +159,29 @@ function conversationAfterButtonClick(reply, replyreply) {
     contentContainer.appendChild(employeeMessageBox);
     contentContainer.appendChild(deliveredEl);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         let seenEl = createSeenElement('Seen');
         let deliveredEl = document.getElementById('Delivered');
         deliveredEl.remove();
         contentContainer.appendChild(seenEl);
         insertTypingElement();
-        setTimeout(()=> {
+        setTimeout(() => {
             let employeeMessageBox = createMessageBoxElement('employe');
             employeeMessageBox.appendChild(createMessageContentElement(replyreply));
             contentContainer.appendChild(employeeMessageBox);
             removeTypingElement();
-        },2000);
-    },3000);
+        }, 2000);
+    }, 3000);
 }
 
 function updateRepValue(repval, operator) {
-    if (this.repValue == 'undefined' || !this.repValue ) {
+    if (this.repValue == 'undefined' || !this.repValue) {
         this.repValue = 200;
     } else if (this.repValue && operator == '+') {
         this.repValue += repval;
     } else if (this.repValue && operator == '-') {
         this.repValue -= repval;
     }
-
-    console.log('test')
     var element = document.getElementById('repvalue');
     element.innerText = this.repValue;
 }

@@ -122,7 +122,7 @@ function createSeenElement(text) {
 }
 
 function onClickYesButton() {
-    conversationAfterButtonClick('E brate bit ce ove sedmice', 'Tooooooooooo braca');
+    conversationAfterButtonClick('E brate bit ce ove sedmice', 'Tooooooooooo braca', true);
     ['success', 'danger'].forEach(className => {
         removeButtonElement(className);
     });
@@ -137,7 +137,7 @@ function onClickYesButton() {
 }
 
 function onClickNoButton() {
-    conversationAfterButtonClick('Nista brate do one tamo sedmice. Zao mi je', 'normala');
+    conversationAfterButtonClick('Nista brate do one tamo sedmice. Zao mi je', 'normala', false);
     ['success', 'danger'].forEach(className => {
         removeButtonElement(className);
     });
@@ -152,7 +152,7 @@ function onClickNoButton() {
     }, 2000)
 }
 
-function conversationAfterButtonClick(reply, replyreply) {
+function conversationAfterButtonClick(reply, replyreply, answerType) {
     let employeeMessageBox = createMessageBoxElement('manager');
     let deliveredEl = createSeenElement('Delivered');
 
@@ -170,7 +170,9 @@ function conversationAfterButtonClick(reply, replyreply) {
             let employeeMessageBox = createMessageBoxElement('employe');
             employeeMessageBox.appendChild(createMessageContentElement(replyreply));
             contentContainer.appendChild(employeeMessageBox);
-            updateUserStatus('offline');
+            if (!ansverType) {
+                updateUserStatus('offline');
+            }
             removeTypingElement();
         }, 2000);
     }, 3000);
